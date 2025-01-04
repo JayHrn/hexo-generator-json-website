@@ -28,7 +28,10 @@ let output = json.meta
   : {}
 
 if (opts.enable) {
-  hexo.log.info('Hi, hexo-generator-json-website!')
+  if (['g', 'generate'].includes(hexo.env.cmd)) {
+    hexo.log.info('Hi, hexo-generator-json-website!')
+  }
+
   hexo.extend.generator.register('json-generator', (site) => {
     if (pages) {
       const pagesProps = getProps(pages)

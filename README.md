@@ -2,7 +2,7 @@
 
 Hexo (<https://hexo.io/>) plugin to generate a JSON file for generic use or consumption with the contents of posts and pages.
 
-It's useful to serve compact and agile content data for microservices like AJAX site search, Twitter typeahead or public API.
+It's useful to serve compact and agile content data for microservices like AJAX site search, or you can do anything that you want.😌
 
 <!-- vscode-markdown-toc -->
 * [News](#News)
@@ -117,7 +117,7 @@ You can customize settings in `_config.yml`.
 Default settings are:
 
 ```yaml
-# you can set `enable: true` to use plugin
+# you can set `enable: true` to use plugin，and you can see Hi, hexo-generator-json-website! when using command like 'hexo g' or 'hexo generate'
 jsonGenerator:
   enable: true
   meta: true
