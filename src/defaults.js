@@ -34,4 +34,9 @@ export default {
     comments: false,
     author: false,
   },
+
+  _data: {
+    enable: false,
+    files: [],
+  },
 }

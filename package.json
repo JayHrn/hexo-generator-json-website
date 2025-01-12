@@ -1,6 +1,6 @@
 {
   "name": "hexo-generator-json-website",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Hexo plugin to generate a JSON file with the contents of posts and pages",
   "scripts": {
     "clean": "shx rm -rf dist",

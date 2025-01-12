@@ -17,6 +17,7 @@ It's useful to serve compact and agile content data for microservices like AJAX 
 	* [Excluding fields](#Excludingfields)
 	* [Drafts](#Drafts)
 	* [Skip indexing](#Skipindexing)
+    * [_data](#_data)
 	* [Custom file name](#Customfilename)
 
 ## <a name='News'></a>News
@@ -104,6 +105,7 @@ tags: [{ //-> Posts tags index ;)
   slug: tag.slug,
   permalink: tag.permalink
 }]
+...
 ```
 
 `hexo.util.stripHTML` is used to get only clean text for `excerpt` and `text` fields.
@@ -157,6 +159,9 @@ jsonGenerator:
     content: false
     comments: false
     author: false
+  _data:
+    enable: false
+    files: []    
 ```
 
 ### <a name='Keywords'></a>Keywords
@@ -278,6 +283,31 @@ jsonGenerator:
 ```
 
 Also, you can set `hidden: false` to override all the rules mentioned above.
+
+### <a name='_data'></a>_data
+This is used to generate any yml file information in the _data folder, such as reading friendly link information, where you can configure the reference as follows:
+
+```yaml
+_data:
+  enable: true # Open Configuration
+  files:  [{name: 'link1',data: 'link1_list'},{name: 'link2',data: 'link2_list'}] 
+```
+- name: The file name corresponding to the yml file. For example, if the file name is `link.yml`, you can fill in `link`, and the final output object will also be this name
+
+- data: The configuration that needs to be read, such as the `name`, `link`, etc. of the friendly links stored in link_list, which will be read out
+
+The following content is finally generated
+
+```json
+"link": [
+    {
+        "name": "Hexo",
+        "link": "https://hexo.io/zh-tw/",
+        "avatar": "https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg",
+        "descr": "快速、簡單且強大的網誌框架"
+    },
+]
+```
 
 ### <a name='Customfilename'></a>Custom file name
 

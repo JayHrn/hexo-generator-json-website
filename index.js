@@ -8,6 +8,7 @@ const opts = config.jsonGenerator || {}
 const json = { ...defs, ...opts }
 const pages = has(json, 'pages') ? json.pages : defaults.pages
 const posts = has(json, 'posts') ? json.posts : defaults.posts
+const _data = has(json, '_data') ? json._data : defaults._data
 const ignore = ignoreSettings(json)
 const categs = {
   categories: [],
@@ -76,6 +77,21 @@ if (opts.enable) {
     }
 
     if (pages || posts || json.meta) Object.assign(output, reduceCategs([categs]))
+
+    if (_data && _data.enable) {
+      const files = _data.files
+      files.map(function (file) {
+        const filename = file.name
+        const dataList = file.data
+        const outputList = []
+        site.data[filename].map(function (data) {
+          data[dataList].map(function (item) {
+            outputList.push(item)
+          })
+        })
+        Object.assign(output, { [filename]: outputList })
+      })
+    }
 
     return {
       path: json.file || 'website.json',
